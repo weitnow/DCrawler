@@ -9,23 +9,11 @@ internal class SimulationComponent : GameComponent
 {
     private readonly RheinwerkGame game;
 
-    public World World
-    {
-        get;
-        private set;
-    }
+    public World World { get; private set; }
 
-    public Player Player
-    {
-        get;
-        private set;
-    }
+    public Player Player { get; private set; }
 
-    public Vector2 Position
-    {
-        get;
-        set;
-    }
+    public Vector2 Position { get; set; }
 
     public SimulationComponent(RheinwerkGame game) : base(game)
     {
@@ -47,7 +35,8 @@ internal class SimulationComponent : GameComponent
         {
             foreach (var character in area.Items.OfType<Character>())
             {
-                character.Position += character.Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                character.move = character.Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                character.Position += character.move;
 
                 foreach (var item in area.Items)
                 {
@@ -60,19 +49,29 @@ internal class SimulationComponent : GameComponent
                         Vector2 resolution = distance * (overlap / distance.Length());
                         if (item.Fixed && !character.Fixed)
                         {
-
+                            // Item fixed
+                            character.Position -= resolution;
                         }
                         else if (!item.Fixed && character.Fixed)
                         {
-
+                            // Character fixed
+                            item.Position += resolution;
                         }
                         else if (!item.Fixed && !character.Fixed)
                         {
-
+                            // Both movable
+                            float totalMass = item.Mass + character.Mass;
+                            character.Position -= resolution * (item.Mass / totalMass);
+                            item.Position += resolution * (character.Mass / totalMass);
                         }
 
                     }
                 }
+            }
+
+            foreach (var item in area.Items)
+            {
+
             }
         }
 

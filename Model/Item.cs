@@ -7,19 +7,19 @@ namespace Dungeoncrawler.Model;
 
 public class Item : ICollidable
 {
-    public float Mass { get; }
-    public bool Fixed { get; }
+    internal Vector2 move = Vector2.Zero;
+    public float Mass { get; set; }
+    public bool Fixed { get; set; }
 
-    public Vector2 Position
-    {
-        get;
-        set;
-    }
+    public Vector2 Position { get; set; }
 
-    public float Radius
+
+    public float Radius { get; set; }
+
+    public Item()
     {
-        get;
-        set;
+        Fixed = false;
+        Mass = 1f;
     }
 
 }
