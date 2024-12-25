@@ -48,4 +48,19 @@ public class Area
 
         Items = new List<Item>();
     }
+
+    public bool IsCellBlocked(int x, int y)
+    {
+        // check if cell is outside of the area, if so it is blocked
+        if (x < 0 || x >= Width - 1 || y < 0 || y >= Height - 1)
+            return true;
+
+
+        for (int l = 0; l < Layers.Length; l++)
+        {
+            if (Layers[l].Tiles[x, y].Blocked)
+                return true;
+        }
+        return false;
+    }
 }
