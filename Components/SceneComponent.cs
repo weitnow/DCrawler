@@ -60,7 +60,8 @@ namespace RheinwerkAdventure.Components
 
         public override void Update(GameTime gameTime)
         {
-            Camera.SetFocus(game.Simulation.Player.Position);
+            Vector2 areaSize = new Vector2(game.Simulation.World.Areas[0].Width, game.Simulation.World.Areas[0].Height);
+            Camera.SetFocus(game.Simulation.Player.Position, areaSize);
         }
 
         public override void Draw(GameTime gameTime)
