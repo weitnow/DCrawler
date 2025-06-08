@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dungeoncrawler.Model;
+namespace RheinwerkAdventure.Model;
 
 internal class Diamant : Item
 {

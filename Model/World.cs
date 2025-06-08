@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Dungeoncrawler.Model;
+namespace RheinwerkAdventure.Model;
 
 public class World
 {

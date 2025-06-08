@@ -1,3 +1,3 @@
 ﻿
-using var game = new Dungeoncrawler.RheinwerkGame();
+using var game = new RheinwerkAdventure.RheinwerkGame();
 game.Run();

@@ -1,7 +1,7 @@
 ﻿using System;
-using Dungeoncrawler.Model;
+using RheinwerkAdventure.Model;
 
-namespace Dungeoncrawler;
+namespace RheinwerkAdventure;
 
 public class Dealer : Character, IInteractable
 {

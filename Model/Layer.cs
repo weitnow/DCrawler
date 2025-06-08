@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dungeoncrawler.Model;
+namespace RheinwerkAdventure.Model;
 
 public class Layer
 {
@@ -17,11 +17,7 @@ public class Layer
         private set;
     }
 
-    public Tile[,] Tiles
-    {
-        get;
-        private set;
-    }
+    public int[,] Tiles { get; private set; }
 
     public Layer(int width, int height)
     {
@@ -33,6 +29,6 @@ public class Layer
         Width = width;
         Height = height;
 
-        Tiles = new Tile[width, height];
+        Tiles = new int[width, height];
     }
 }

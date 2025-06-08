@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dungeoncrawler;
+namespace RheinwerkAdventure;
 
 public interface IInteractable
 {

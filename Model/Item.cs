@@ -3,7 +3,7 @@
 using Microsoft.Xna;
 using Microsoft.Xna.Framework;
 
-namespace Dungeoncrawler.Model;
+namespace RheinwerkAdventure.Model;
 
 public class Item : ICollidable
 {

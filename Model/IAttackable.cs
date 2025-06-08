@@ -1,9 +1,10 @@
 ﻿using System;
 
-namespace Dungeoncrawler;
+namespace RheinwerkAdventure;
 
 public interface IAttackable
 {
+    int MaxHitpoints { get; }
     int Hitpoints { get; }
 
 }

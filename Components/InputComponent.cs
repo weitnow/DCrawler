@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Dungeoncrawler;
+namespace RheinwerkAdventure;
 
 internal class InputComponent : GameComponent
 {

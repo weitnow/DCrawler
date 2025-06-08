@@ -1,9 +1,23 @@
 ﻿using System;
-using Dungeoncrawler.Model;
+using System.Collections.Generic;
+using RheinwerkAdventure.Model;
 
-namespace Dungeoncrawler;
+namespace RheinwerkAdventure;
 
-public class Orc : Character, IAttackable
+public class Orc : Character, IAttackable, IAttacker
 {
-    public int Hitpoints => throw new NotImplementedException();
+    public int MaxHitpoints { get; set; }
+
+    public int Hitpoints { get; set; }
+
+    public ICollection<Item> AttackableItems { get; private set; }
+
+    public float AttackRange { get; set; }
+
+    public int AttackValue { get; set; }
+
+    public Orc()
+    {
+        AttackableItems = new List<Item>();
+    }
 }

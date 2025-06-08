@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
-namespace Dungeoncrawler.Model;
+namespace RheinwerkAdventure.Model;
 
 public class Area
 {
+    public string Name { get; set; }
+    
+    public Color Background { get; set; }
+    
     public int Width
     {
         get;
@@ -29,6 +34,12 @@ public class Area
         private set;
     }
 
+    public Dictionary<int, Tile> Tiles
+    {
+        get;
+        private set;
+    }
+
 
     public Area(int layers, int width, int height)
     {
@@ -47,18 +58,24 @@ public class Area
         }
 
         Items = new List<Item>();
+
+        Tiles = new Dictionary<int, Tile>();
+ 
     }
 
     public bool IsCellBlocked(int x, int y)
     {
-        // check if cell is outside of the area, if so it is blocked
-        if (x < 0 || x >= Width - 1 || y < 0 || y >= Height - 1)
-            return true;
-
-
+        
         for (int l = 0; l < Layers.Length; l++)
         {
-            if (Layers[l].Tiles[x, y].Blocked)
+
+            int tileId = Layers[l].Tiles[x, y];
+            if (tileId == 0)
+                continue;
+
+            Tile tile = Tiles[tileId];
+
+            if (tile.Blocked)
                 return true;
         }
         return false;

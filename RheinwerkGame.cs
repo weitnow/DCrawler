@@ -2,13 +2,19 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using RheinwerkAdventure.Components;
 
-namespace Dungeoncrawler;
+namespace RheinwerkAdventure;
 
-public class RheinwerkGame : Game
+internal class RheinwerkGame : Game
 {
     private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
+
+    public HudComponent Hud
+    {
+        get;
+        private set;
+    }
 
     // Variables for FPS calculation
     int frameRate = 0;
@@ -53,6 +59,11 @@ public class RheinwerkGame : Game
         Scene.UpdateOrder = 2;
         Scene.DrawOrder = 0;
         Components.Add(Scene);
+
+        Hud = new HudComponent(this);
+        Hud.UpdateOrder = 3;
+        Hud.DrawOrder = 1;
+        Components.Add(Hud);
     }
 
     protected override void Initialize()
@@ -62,19 +73,10 @@ public class RheinwerkGame : Game
         base.Initialize();
     }
 
-    protected override void LoadContent()
-    {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        // TODO: use this.Content to load your game content here
-    }
-
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
-        // TODO: Add your update logic here
 
         // Update FPS calculation
         elapsedTime += gameTime.ElapsedGameTime;
@@ -94,9 +96,7 @@ public class RheinwerkGame : Game
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.Blue);
-
-        // TODO: Add your drawing code here
-
+        
         // Increment frame counter
         frameCounter++;
 
