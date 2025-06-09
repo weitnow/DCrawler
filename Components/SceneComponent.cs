@@ -21,6 +21,10 @@ namespace RheinwerkAdventure.Components
 
         private Dictionary<string, Texture2D> textures;
         
+        //private Dictionary<Item, ItemRenderer> itemRenderer;
+
+        private Texture2D coin;
+        
         public Camera Camera { get; private set; }
 
         public SceneComponent (RheinwerkGame game) : base(game)
@@ -55,6 +59,10 @@ namespace RheinwerkAdventure.Components
                     Texture2D texture = Texture2D.FromStream(GraphicsDevice, stream);
                     textures.Add(textureName, texture);
                 }
+            }
+            using (Stream stream = File.OpenRead(Path.Combine(Environment.CurrentDirectory, "Content") + "//" + "coin_silver.png"))
+            {
+                coin = Texture2D.FromStream(GraphicsDevice, stream);
             }
         }
 
